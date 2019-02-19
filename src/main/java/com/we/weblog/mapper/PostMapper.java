@@ -50,9 +50,9 @@ public interface PostMapper {
      * @return
      */
     @Insert({"insert into hexo_post " +
-            "(article,title,created,tags,md,type,slug,publish,categories) " +
+            "(article,title,created,tags,md,type,slug,publish,categories,status) " +
             "values (#{b.article},#{b.title},#{b.created},#{b.tags},#{b.md}" +
-            ",#{b.type},#{b.slug},#{b.publish},#{b.categories})"})
+            ",#{b.type},#{b.slug},#{b.publish},#{b.categories},#{b.status})"})
     @SelectKey(before=false,keyProperty="b.uid",resultType=Integer.class,
             statementType= StatementType.STATEMENT,statement="SELECT LAST_INSERT_ID() AS id")
     int savePost(@Param("b") Post post);

@@ -34,8 +34,16 @@ public class Post {
     private String   categories;
     //浏览量
     private int     hits;
+    //文章状态 0-回收站，1-草稿，2-发布
+    private int status;
 
+    public int getStatus() {
+        return status;
+    }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getPublish() {
         return publish;

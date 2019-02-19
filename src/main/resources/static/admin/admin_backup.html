@@ -61,7 +61,6 @@
         } ,
         methods : {
             backUp: function(type) {
-                debugger;
                 axios.get("/admin/backup/table?type=" + type).then(function (response) {
                     $.alert(response.data);
                 })
@@ -69,7 +68,6 @@
 
         } ,
         mounted : function () {
-            debugger
             // var self = this;
             // axios.get("/admin/index/data").then(function (response) {
             //     $.extend(self,response.data);

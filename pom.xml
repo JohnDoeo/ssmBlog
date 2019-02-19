@@ -73,6 +73,8 @@
 			<groupId>com.vue.adminlte4j</groupId>
 			<artifactId>adminlte4j</artifactId>
 			<version>1.0.2-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/vuejar/adminlte4j-1.0.2-SNAPSHOT.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -124,6 +126,13 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<includeSystemScope>true</includeSystemScope>
 				</configuration>
 			</plugin>
 		</plugins>

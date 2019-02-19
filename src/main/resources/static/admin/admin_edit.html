@@ -67,7 +67,6 @@
         },
         methods : {
             updateData : function(){
-                debugger
                 vm.mdData.mdText = vm.editor.getMarkdown();
                 vm.mdData.md = vm.editor.getMarkdown();
                 vm.mdData.article = vm.editor.getHTML();
@@ -83,7 +82,6 @@
         } ,
         mounted : function () {
             var self = this;
-            debugger
             var id = $.getQueryStr("id");
             axios.get("/admin/update_send_data/" + id).then(function (response) {
                 self.mdData = response.data.context;

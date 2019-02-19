@@ -74,7 +74,6 @@
 
         } ,
         mounted : function () {
-            debugger
             var self = this;
             axios.get("/admin/index/data").then(function (response) {
                 $.extend(self,response.data);
