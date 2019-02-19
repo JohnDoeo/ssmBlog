@@ -11,6 +11,7 @@ import com.we.weblog.domain.modal.Types;
 import com.we.weblog.service.CommentService;
 import com.we.weblog.service.PostService;
 import com.we.weblog.service.TagService;
+import com.we.weblog.domain.util.SendMailWithFile;
 import com.we.weblog.web.controller.core.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,10 +82,14 @@ public class IndexController extends BaseController {
         //处理XSS
         comment.setContent(cleanXSS(comment.getContent()));
         int result = commentSerivce.saveComment(comment,request);
-        if(result > 0)
+        if(result > 0) {
+            SendMailWithFile.sendMail(comment,postService.findByPostId(comment.getArticle_id()).getTitle());
+            //给评论人发送邮件
+            SendMailWithFile.sendMail("JohnDoeo'Blog message","感谢您的评论！！！",comment.getEmail());
             return UIModel.success().msg("评论成功");
-        else
+        }else {
             return UIModel.fail().msg("评论失败,输入内容有误");
+        }
     }
 
 //    /**

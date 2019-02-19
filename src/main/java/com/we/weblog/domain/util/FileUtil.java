@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FileUtil {
 
-     private static Path getJavaResources() {
+     public static Path getJavaResources() {
          String userDir = System.getProperty("user.dir") ;
          Path path = Paths.get(userDir  , "src" , "main" , "resources","static","img") ;
          return  path ;
@@ -74,7 +74,7 @@ public class FileUtil {
     /**
      * 获取web服务器访问url根路径
      */
-    private static String getServerRoot(HttpServletRequest request) throws MalformedURLException {
+    public static String getServerRoot(HttpServletRequest request) throws MalformedURLException {
         String serverRoot;
         try {
             serverRoot = new URL(request.getScheme(),request.getServerName(),request.getServerPort(),request.getContextPath()).toString();

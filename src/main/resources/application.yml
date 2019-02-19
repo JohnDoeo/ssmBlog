@@ -10,7 +10,7 @@ spring:
     datasource:
       username: root
       password: 123456
-      url: jdbc:mysql://127.0.0.1:3306/ssmblog?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://39.105.154.131:3306/ssmblog?useUnicode=true&characterEncoding=utf8
       sql-script-encoding: UTF-8
       driverClassName: com.mysql.jdbc.Driver
 mybatis:
