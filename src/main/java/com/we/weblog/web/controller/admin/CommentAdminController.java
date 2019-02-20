@@ -9,7 +9,6 @@ import com.we.weblog.domain.modal.CommentConfigQuery;
 import com.we.weblog.domain.User;
 import com.we.weblog.domain.util.BaseConfigUtil;
 import com.we.weblog.service.CommentService;
-import com.we.weblog.service.MailService;
 import com.we.weblog.service.PostService;
 import com.we.weblog.web.controller.core.BaseController;
 import com.we.weblog.domain.Comment;
@@ -35,8 +34,6 @@ public class CommentAdminController extends BaseController {
     private CommentService commentService;
     @Resource
     private PostService postService;
-    @Resource
-    private MailService mailService;
 
     /**
      * 后台回复添加评论

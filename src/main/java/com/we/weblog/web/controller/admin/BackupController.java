@@ -7,7 +7,6 @@ import com.vue.adminlte4j.model.form.FormModel;
 import com.we.weblog.domain.BackFile;
 import com.we.weblog.domain.User;
 import com.we.weblog.service.BackupService;
-import com.we.weblog.service.MailService;
 import com.we.weblog.service.UserService;
 import com.we.weblog.domain.util.BaseConfigUtil;
 import com.we.weblog.domain.enums.PropertyEnum;
@@ -21,11 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -43,8 +39,6 @@ public class BackupController extends BaseController {
     private BackupService backupService;
     @Resource
     private UserService userService;
-    @Resource
-    private MailService mailService;
 
     /**
      * 显示后台博客列表

@@ -21,7 +21,7 @@ public class ApplicationStarter {
         ApplicationContext context = SpringApplication.run(ApplicationStarter.class,args);
         String serverPort = context.getEnvironment().getProperty("server.port");
         //输入访问链接
-        LOG.info("Clay started at http://localhost:" + serverPort);
+        LOG.info("JohnDoeo started at http://localhost:" + serverPort);
     }
 
 

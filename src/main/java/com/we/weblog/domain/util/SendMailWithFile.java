@@ -1,6 +1,7 @@
 package com.we.weblog.domain.util;
 
 import com.we.weblog.domain.Comment;
+import org.springframework.scheduling.annotation.Async;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
@@ -8,9 +9,10 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.*;
-import javax.servlet.http.HttpServletRequest;
-import java.net.MalformedURLException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -74,10 +76,10 @@ public class SendMailWithFile {
     }
 
     public static void sendMail(String subject,String content, String recipientAddress){
-        sendMail(defaultFilePath,subject,content,recipientAddress);
+        new SendMailWithFile().sendMail(defaultFilePath,subject,content,recipientAddress);
     }
-
-    public static void sendMail(String filePath,String subject,String content, String recipientAddress){
+    @Async//异步发送邮件
+    public void sendMail(String filePath,String subject,String content, String recipientAddress){
         Transport transport = null;
         try {
             //1、连接邮件服务器的参数配置
@@ -88,6 +90,10 @@ public class SendMailWithFile {
             props.setProperty("mail.transport.protocol", "smtp");
             //设置发件人的SMTP服务器地址
             props.setProperty("mail.smtp.host", "smtp.163.com");
+            props.setProperty("mail.smtp.port","465");
+            //设置ssl加密
+            props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            props.setProperty("mail.smtp.socketFactory.port", "465");
             //2、创建定义整个应用程序所需的环境信息的 Session 对象
             Session session = Session.getInstance(props);
             //设置调试信息在控制台打印出来
